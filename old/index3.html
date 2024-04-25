@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Videoclub Alfa</title>
+</head>
+<style type="text/css">
+	html, body {
+		background-color:#212121; 
+		padding: 6px;
+		display: flex;
+		flex-direction: column;
+	}
+	body>div{
+		background-color: #494949;
+		padding: 5px;
+		height: auto;
+		width: 100%;
+	}
+	.grid1{
+		display: grid;
+		grid-template-columns: auto auto auto;
+		grid-template-rows: 70px 70px 70px;
+		grid-row-gap: 15px;
+		justify-content: space-evenly;
+		background-color: blue;
+		margin: 20px;
+		height: auto;
+	}
+	.grid2{
+		display: grid;
+		grid-template-columns: auto auto auto;
+		grid-template-rows: auto;
+		background-color: blue;
+		justify-content: center;
+		margin-left: 80px;
+		margin-right: 80px;
+		height: auto;
+	}
+	.grid-item{
+		border: 1px solid black;*/
+		height: auto;
+		width: auto;
+		margin: 0;
+	}
+</style>
+<body>
+<div>
+	<div class="grid1">
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item">
+			<a href="clientes.php"><img src="iconoGclientes.png" height="70px"></a>
+		</div>
+		<div class="grid-item">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+		<div class="grid-item" style="grid-column-start: 2;">
+			<img src="iconoGclientes.png" height="70px">
+		</div>
+	</div>
+	<div class="grid2">
+		<div class="grid-item" style="grid-column: 1/3";>
+			<img src="logova.png" height="250px">
+		</div>
+		<div class="grid-item">
+			1
+		</div>
+	</div>
+</div>
+</body>
+</html>
