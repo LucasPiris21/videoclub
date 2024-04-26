@@ -29,11 +29,11 @@ $enddate = date('o-m-d', $enddate);
 			<form method="post" action="altabonos.php">
 				<div class="form-group">
 					<label for="credito">Credito</label>
-					<input type="number" class="form-control" id="credito" name="credito">
+					<input type="number" class="form-control" id="credito" name="credito" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="periodo">Periodo</label>
-					<input type="number" class="form-control" id="periodo" name="periodo">
+					<input type="number" class="form-control" id="periodo" name="periodo" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="fecha_emision">Fecha de Emisión</label>
@@ -56,7 +56,7 @@ $enddate = date('o-m-d', $enddate);
 						?>
 					</datalist>
 					<br>
-					<input class="form-control" name="dni_cliente" list="dni_cliente">
+					<input type="number" class="form-control" name="dni_cliente" list="dni_cliente" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="dni_personal">DNI del Personal</label>
@@ -71,7 +71,7 @@ $enddate = date('o-m-d', $enddate);
 						?>
 					</datalist>
 					<br>
-					<input class="form-control" name="dni_personal" list="dni_personal">
+					<input type="number" class="form-control" name="dni_personal" list="dni_personal" min="1" pattern="^[0-9]+" minlength="8" maxlength="8" required>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-auto">

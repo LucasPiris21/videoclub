@@ -40,15 +40,15 @@ $cant_copias=$fila[4];
 				</div>
 				<div class="form-group">
 					<label for="titulo">Título</label>
-					<input type="text" class="form-control" id="titulo" name="titulo" value="<?php echo $titulo?>">
+					<input type="text" class="form-control" id="titulo" name="titulo" value="<?php echo $titulo?>" required>
 				</div>
 				<div class="form-group">
 					<label for="year">Año</label>
-					<input type="text" class="form-control" id="year" name="year" value="<?php echo $year?>">
+					<input type="text" class="form-control" id="year" name="year" value="<?php echo $year?>" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="genero">Género</label>
-					<input type="text" class="form-control" id="genero" name="genero" value="<?php echo $genero?>">
+					<input type="text" class="form-control" id="genero" name="genero" value="<?php echo $genero?>" required>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-auto">

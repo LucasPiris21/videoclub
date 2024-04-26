@@ -9,7 +9,7 @@ if (empty($_GET['submit']) or isset($_GET['clear'])) {
 	$consulta=mysqli_query($conexion,$query);
 } else {
 	$busq=$_GET['busq'];
-	$query="SELECT * FROM `peliculas` WHERE concat(id_pelicula,titulo,año,genero,cant_copias) LIKE '%$busq%'";
+	$query="SELECT * FROM `peliculas` WHERE concat(id_pelicula,titulo,year,genero,cant_copias) LIKE '%$busq%'";
 	$consulta=mysqli_query($conexion,$query);
 }
 date_default_timezone_set("America/Buenos_Aires");

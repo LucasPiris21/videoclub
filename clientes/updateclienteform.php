@@ -35,19 +35,19 @@ $email=$fila[3];
 			<form method="post" action="updatecliente.php">
 				<div class="form-group">
 					<label for="dni">DNI</label>
-					<input type="text" class="form-control" id="dni" name="dni" value="<?php echo $dni?>" readonly>
+					<input type="number" class="form-control" id="dni" name="dni" value="<?php echo $dni?>" min="1" pattern="^[0-9]+" readonly>
 				</div>
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
-					<input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre?>">
+					<input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre?>" required>
 				</div>
 				<div class="form-group">
 					<label for="telefono">Teléfono</label>
-					<input type="text" class="form-control" id="telefono" name="telefono" value="<?php echo $telefono?>">
+					<input type="number" class="form-control" id="telefono" name="telefono" value="<?php echo $telefono?>" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="email">E-mail</label>
-					<input type="text" class="form-control" id="email" name="email" value="<?php echo $email?>">
+					<input type="text" class="form-control" id="email" name="email" value="<?php echo $email?>" required>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-auto">

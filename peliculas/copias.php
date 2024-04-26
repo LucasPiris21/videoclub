@@ -4,7 +4,7 @@ if (empty($_SESSION['estado'])) {
 	header("location:../index.php");
 }
 $referer=$_SERVER['HTTP_REFERER'];
-if ($referer=='http://localhost/Videoclub%20Alfa/peliculas/peliculas.php') {
+if ($referer=='http://localhost/Videoclub%20Alfa/peliculas/peliculas.php' or $referer=='http://localhost/Videoclub%20Alfa/peliculas/altacopias.php') {
  	$_SESSION['id']=$_GET['id'];
  	$_SESSION['titulo']=$_GET['titulo'];
  	$conexion=mysqli_connect('localhost','root','','videoclub');

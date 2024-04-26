@@ -87,7 +87,11 @@ $date = date('d-m-o');
 										echo $fila[1];
 									echo "</td>";
 									echo "<td>";
-										echo $fila[2];
+										if ($fila[2]==NULL) {
+											echo "El personal ya no esta en la base de datos";
+										} else {
+											echo $fila[2];
+										}	
 									echo "</td>";
 									echo "<td>";
 										echo $fila[3];

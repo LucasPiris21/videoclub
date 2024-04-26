@@ -56,7 +56,7 @@ $consulta3=mysqli_query($conexion,$query3);
 						?>
 						</datalist>
 						<br>
-						<input type="text" class="form-control" name="dni_personal" list="dni" value="<?php echo $dni_personal; ?>">
+						<input type="number" class="form-control" name="dni_personal" list="dni" value="<?php echo $dni_personal; ?>" min="1" pattern="^[0-9]+" required>
 					</div>
 					<div class="col-md-4">
 						<label for="cuit_proveedor">Proveedor:</label>
@@ -70,7 +70,7 @@ $consulta3=mysqli_query($conexion,$query3);
 						?>
 						</datalist>
 						<br>
-						<input class="form-control" name="cuit_proveedor" list="proveedor" value="<?php echo $cuit_proveedor; ?>">
+						<input type="number" class="form-control" name="cuit_proveedor" list="proveedor" value="<?php echo $cuit_proveedor; ?>" min="1" pattern="^[0-9]+" readonly>
 					</div>
 				</div>
 				<?php
@@ -79,7 +79,7 @@ $consulta3=mysqli_query($conexion,$query3);
 						echo "<input type='number' name='id_detalle[]' value='$detalle[1]' hidden>";
 							echo "<div class='col-md-3'>";
 								echo "<label for='ejemplares'>N° Ejemplares </label>";
-								echo "<input type='number' class='form-control col-sm-10' id='ejemplares' name='ejemplares[]' value='$detalle[2]'>";
+								echo "<input type='number' class='form-control col-sm-10' id='ejemplares' name='ejemplares[]' value='$detalle[2]' min='1' pattern='^[0-9]+'' required>";
 							echo "</div>";
 							echo "<div class='col'>";
 								echo "<datalist id='pelicula'>";
@@ -88,7 +88,7 @@ $consulta3=mysqli_query($conexion,$query3);
 								}
 								echo "</datalist>";
 								echo "<label for='pelicula'>Película seleccionada: </label>";
-								echo "<input type='text' class='form-control' name='pelicula[]' list='pelicula' value='$detalle[3]'>";
+								echo "<input type='number' class='form-control' name='pelicula[]' list='pelicula' value='$detalle[3]' min='1' pattern='^[0-9]+'' required>";
 							echo "</div>";
 						echo "</div>";
 					}

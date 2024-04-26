@@ -31,7 +31,7 @@ $id=$_GET['id']
 				<div class="form-group row">
 					<div class="col">
 						<label for="cantidad">Cantidad de copias:</label>
-						<input type="number" class="form-control" name="cantidad" id="cantidad">
+						<input type="number" class="form-control" name="cantidad" id="cantidad" min="1" pattern="^[0-9]+" required>
 					</div>
 					<div class="col-7">
 						<label for="proveedor">Proveedor:</label>
@@ -46,12 +46,17 @@ $id=$_GET['id']
 						?>
 						</datalist>
 						<br>
-						<input class="form-control" name="proveedor" list="proveedor">
+						<input type="number" class="form-control" name="proveedor" list="proveedor" min="1" pattern="^[0-9]+" required>
 					</div>
 				</div>
 				<div class="form-group row justify-content-center">
 					<div class="col-auto my-4">
 						<button type="submit" class="btn btn-danger">Enviar</button>
+					</div>
+					<div class="col-auto my-4">
+						<?php
+							echo "<a href='copias.php' class='btn btn-danger'>Cancelar</a>";
+						?>
 					</div>
 				</div>
 			</form>

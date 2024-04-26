@@ -28,14 +28,14 @@ $conexion=mysqli_connect('localhost','root','','videoclub');
 					<label for="id_pedido">ID_Pedido</label>
 						<datalist id="pedido">
 						<?php
-							$query="SELECT `id_pedido` FROM `pedidos`";
+							$query="SELECT `id_pedido`,`cuit_proveedor` FROM `pedidos`";
 							$consulta=mysqli_query($conexion,$query);
 							while ($fila=mysqli_fetch_array($consulta)) {
-								echo "<option value='$fila[0]'></option>";
+								echo "<option value='$fila[0]'>Proveedor: $fila[1]</option>";
 							}
 						?>
 						</datalist>
-						<input type="text" class="form-control" name="id_pedido" list="pedido">
+						<input type="number" class="form-control" name="id_pedido" list="pedido" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="cuit_proveedor">Proveedor:</label>
@@ -48,12 +48,12 @@ $conexion=mysqli_connect('localhost','root','','videoclub');
 							}
 						?>
 						</datalist>
-						<input class="form-control" name="cuit_proveedor" list="proveedor">
+						<input type="number" class="form-control" name="cuit_proveedor" list="proveedor" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="monton">Montón:</label>
 					<div class="input-group mb-2">
-						<input type="number" class="form-control" id="monton" name="monton" value="$$$">
+						<input type="number" class="form-control" id="monton" name="monton" value="$$$" min="1" pattern="^[0-9]+" required>
 						<div class="input-group-prepend">
           					<div class="input-group-text">$</div>
        					 </div>

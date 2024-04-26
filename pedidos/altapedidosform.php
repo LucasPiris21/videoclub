@@ -40,7 +40,7 @@ $conexion=mysqli_connect('localhost','root','','videoclub');
 						?>
 						</datalist>
 						<br>
-						<input type="text" class="form-control" name="dni_personal" list="dni" value="<?php if (isset($_POST['confirmar'])) { $dni_personal=$_POST['dni_personal']; echo $dni_personal; }?>">
+						<input type="number" class="form-control" name="dni_personal" list="dni" value="<?php if (isset($_POST['confirmar'])) { $dni_personal=$_POST['dni_personal']; echo $dni_personal; }?>" min="1" pattern="^[0-9]+" required>
 					</div>
 					<div class="col">
 						<label for="cuit_proveedor">Proveedor:</label>
@@ -54,11 +54,11 @@ $conexion=mysqli_connect('localhost','root','','videoclub');
 						?>
 						</datalist>
 						<br>
-						<input class="form-control" name="cuit_proveedor" list="proveedor" value="<?php if (isset($_POST['confirmar'])) { $cuit_proveedor=$_POST['cuit_proveedor']; echo $cuit_proveedor; }?>">
+						<input type="number" class="form-control" name="cuit_proveedor" list="proveedor" value="<?php if (isset($_POST['confirmar'])) { $cuit_proveedor=$_POST['cuit_proveedor']; echo $cuit_proveedor; }?>" min="1" pattern="^[0-9]+" required>
 					</div>
 					<div class="col">
 						<label for="cantidad">Cantidad:</label>
-						<input type="number" class="form-control" id="cantidad" name="cantidad" value="<?php if (isset($_POST['confirmar'])) { $cantidad=$_POST['cantidad']; echo $cantidad; }?>">
+						<input type="number" class="form-control" id="cantidad" name="cantidad" value="<?php if (isset($_POST['confirmar'])) { $cantidad=$_POST['cantidad']; echo $cantidad; }?>" min="1" pattern="^[0-9]+" required>
 					</div>
 					<div class="col">
 						<br>
@@ -71,36 +71,45 @@ $conexion=mysqli_connect('localhost','root','','videoclub');
 				$dni_personal=$_POST['dni_personal'];
 				$cuit_proveedor=$_POST['cuit_proveedor'];
 				$cantidad=$_POST['cantidad'];
-				$query3="SELECT `id_pelicula`, `titulo`, `year` FROM `peliculas`";
-				$consulta3=mysqli_query($conexion,$query3);
-				echo "<form method='post' id='formpedido' action='altapedidos.php'>";
-					echo "<input class='form-control' name='dni_personal' value='$dni_personal' hidden>";
-					echo "<input class='form-control' name='cuit_proveedor' value='$cuit_proveedor' hidden>";
-					echo "<input class='form-control' name='cantidad' value='$cantidad' hidden>";
-					for ($i=0; $i <$cantidad ; $i++) { 
-						echo "<div class='form-group row col-md-12'>";
-							echo "<div class='col-md-3'>";
-								echo "<label for='ejemplares'>N° Ejemplares </label>";
-								echo "<input type='number' class='form-control col-sm-10' id='ejemplares' name='ejemplares[]'>";
+				//Para verificar que el DNI del cliente o el CUIT del proveedor existe en la base de datos
+				$query0="SELECT * FROM `personal` WHERE `dni`='$dni_personal'";
+				$consulta0=mysqli_query($conexion,$query0);
+				$query01="SELECT * FROM `proveedores` WHERE `cuit`='$cuit_proveedor'";
+				$consulta01=mysqli_query($conexion,$query01);
+				if (mysqli_num_rows($consulta0)==0 or mysqli_num_rows($consulta01)==0) {
+					echo "El cliente o proveedor no existe en la base de datos";
+ 				} else {
+ 					$query3="SELECT `id_pelicula`, `titulo`, `year` FROM `peliculas`";
+					$consulta3=mysqli_query($conexion,$query3);
+					echo "<form method='post' id='formpedido' action='altapedidos.php'>";
+						echo "<input class='form-control' name='dni_personal' value='$dni_personal' hidden>";
+						echo "<input class='form-control' name='cuit_proveedor' value='$cuit_proveedor' hidden>";
+						echo "<input class='form-control' name='cantidad' value='$cantidad' hidden>";
+						for ($i=0; $i <$cantidad ; $i++) { 
+							echo "<div class='form-group row col-md-12'>";
+								echo "<div class='col-md-3'>";
+									echo "<label for='ejemplares'>N° Ejemplares </label>";
+									echo "<input type='number' class='form-control col-sm-10' id='ejemplares' name='ejemplares[]' min='1' pattern='^[0-9]+' required>";
+								echo "</div>";
+								echo "<div class='col'>";
+									echo "<datalist id='pelicula'>";
+									while ($fila3=mysqli_fetch_array($consulta3)) {
+										echo "<option value='$fila3[0]'>'$fila3[1] ($fila3[2])'</option>";
+									}
+									echo "</datalist>";
+									echo "<label for='pelicula'>Seleccione las películas: </label>";
+									echo "<input type='number' class='form-control' name='pelicula[]' list='pelicula' min='1' pattern='^[0-9]+' required>";
+								echo "</div>";
 							echo "</div>";
-							echo "<div class='col'>";
-								echo "<datalist id='pelicula'>";
-								while ($fila3=mysqli_fetch_array($consulta3)) {
-									echo "<option value='$fila3[0]'>'$fila3[1] ($fila3[2])'</option>";
-								}
-								echo "</datalist>";
-								echo "<label for='pelicula'>Seleccione las películas: </label>";
-								echo "<input type='text' class='form-control' name='pelicula[]' list='pelicula'>";
-							echo "</div>";
-						echo "</div>";
-					}
-			echo "</form>";
-			}
+						}
+					echo "</form>";
+				}
+ 			}
 		?>
 		</div>
 	</div>
 	<?php
-	if (isset($_POST['confirmar'])) {
+	if (isset($_POST['confirmar']) and mysqli_num_rows($consulta0)<>0 and mysqli_num_rows($consulta01)<>0) {
 		echo "<div class='row justify-content-center'>";
 			echo "<button type='submit' form='formpedido' class='btn btn-danger'>Enviar</button>";
 		echo "</div>";	

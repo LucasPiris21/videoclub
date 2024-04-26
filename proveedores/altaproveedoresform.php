@@ -28,19 +28,19 @@ if ($_SESSION['cargo']=="Empleado") {
 			<form method="post" action="altaproveedores.php">
 				<div class="form-group">
 					<label for="cuit">CUIT</label>
-					<input type="text" class="form-control w-100" id="cuit" name="cuit">
+					<input type="text" class="form-control w-100" id="cuit" name="cuit" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
-					<input type="text" class="form-control" id="nombre" name="nombre">
+					<input type="text" class="form-control" id="nombre" name="nombre" required>
 				</div>
 				<div class="form-group">
 					<label for="telefono">Teléfono</label>
-					<input type="text" class="form-control" id="telefono" name="telefono">
+					<input type="text" class="form-control" id="telefono" name="telefono" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="direccion">Dirección</label>
-					<input type="text" class="form-control" id="direccion" name="direccion">
+					<input type="text" class="form-control" id="direccion" name="direccion" required>
 				</div>	
 				<div class="row justify-content-center">
 					<div class="col-auto">

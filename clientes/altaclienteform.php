@@ -25,19 +25,19 @@ if (empty($_SESSION['estado'])) {
 			<form method="post" action="altacliente.php">
 				<div class="form-group">
 					<label for="dni">DNI</label>
-					<input type="text" class="form-control w-100" id="dni" name="dni">
+					<input type="number" class="form-control w-100" id="dni" name="dni" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
-					<input type="text" class="form-control" id="nombre" name="nombre">
+					<input type="text" class="form-control" id="nombre" name="nombre" required>
 				</div>
 				<div class="form-group">
 					<label for="telefono">Teléfono</label>
-					<input type="text" class="form-control" id="telefono" name="telefono">
+					<input type="number" class="form-control" id="telefono" name="telefono" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="email">E-mail</label>
-					<input type="text" class="form-control" id="email" name="email">
+					<input type="text" class="form-control" id="email" name="email" required>
 				</div>			
 				<div class="row justify-content-center">
 					<div class="col-auto">

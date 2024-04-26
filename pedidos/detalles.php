@@ -65,11 +65,6 @@ $consulta=mysqli_query($conexion,$query);
 						</tbody>
 					</table>
 				</div>
-				<div class="row justify-content-star">
-					<div class="col-md-auto align-self-center">
-						<a href='updatedetalleform.php?id=<?php echo $_SESSION["id"]; ?>' class="add btn btn-danger">Agregar detalle</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

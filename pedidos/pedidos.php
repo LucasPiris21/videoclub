@@ -83,7 +83,11 @@ $date = date('d-m-o');
 										echo '<a href="detalles.php?id='.$fila[0].'" target="_blank">'.$fila[0].'</a>';
 									echo "</td>";
 									echo "<td>";
-										echo $fila[1];
+										if ($fila[1]==NULL) {
+											echo "El personal ya no esta en la base de datos";
+										} else {
+											echo $fila[1];
+										}	
 									echo "</td>";
 									echo "<td>";
 										echo $fila[2];

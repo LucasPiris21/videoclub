@@ -42,15 +42,15 @@ $direccion=$fila[3];
 				</div>
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
-					<input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre?>">
+					<input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre?>" readonly>
 				</div>
 				<div class="form-group">
 					<label for="telefono">Teléfono</label>
-					<input type="text" class="form-control" id="telefono" name="telefono" value="<?php echo $telefono?>">
+					<input type="text" class="form-control" id="telefono" name="telefono" value="<?php echo $telefono?>" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="direccion">Dirección</label>
-					<input type="text" class="form-control" id="direccion" name="direccion" value="<?php echo $direccion?>">
+					<input type="text" class="form-control" id="direccion" name="direccion" value="<?php echo $direccion?>" required>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-auto">

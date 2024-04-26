@@ -35,12 +35,12 @@ $conexion=mysqli_connect('localhost','root','','videoclub');
 							}
 						?>
 						</datalist>
-						<input type="number" class="form-control" name="id_factura" list="factura">
+						<input type="number" class="form-control" name="id_factura" list="factura" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="monton">Montón:</label>
 					<div class="input-group mb-2">
-						<input type="number" class="form-control" id="monton" name="monton" value="$$$">
+						<input type="number" class="form-control" id="monton" name="monton" value="$$$" min="1" pattern="^[0-9]+" required>
 						<div class="input-group-prepend">
           					<div class="input-group-text">$</div>
        					 </div>
@@ -57,7 +57,7 @@ $conexion=mysqli_connect('localhost','root','','videoclub');
 							}
 						?>
 						</datalist>
-						<input type="text" class="form-control" name="dni_personal" list="personal">
+						<input type="number" class="form-control" name="dni_personal" list="personal" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-auto">

@@ -25,15 +25,15 @@ if (empty($_SESSION['estado'])) {
 			<form method="post" action="altapeliculas.php">
 				<div class="form-group">
 					<label for="titulo">Título</label>
-					<input type="text" class="form-control w-100" id="titulo" name="titulo">
+					<input type="text" class="form-control w-100" id="titulo" name="titulo" required>
 				</div>
 				<div class="form-group">
 					<label for="año">Año</label>
-					<input type="text" class="form-control" id="año" name="año">
+					<input type="number" class="form-control" id="año" name="año" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="genero">Género</label>
-					<input type="text" class="form-control" id="genero" name="genero">
+					<input type="text" class="form-control" id="genero" name="genero" required>
 				</div>		
 				<div class="row justify-content-center">
 					<div class="col-auto">

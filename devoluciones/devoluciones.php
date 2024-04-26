@@ -87,20 +87,20 @@ $consulta3=mysqli_query($conexion,$query);
 							<?php while ($fila=mysqli_fetch_array($consulta)) {
 								echo "<tr>";
 									echo "<td>";
-										echo $fila[0];
-									echo "</td>";
-									echo "<td>";
 										echo $fila[1];
 									echo "</td>";
 									echo "<td>";
 										echo $fila[2];
 									echo "</td>";
 									echo "<td>";
-										$fecha=date_create($fila[3]);
+										echo $fila[3];
+									echo "</td>";
+									echo "<td>";
+										$fecha=date_create($fila[4]);
 										echo date_format($fecha,'d-m-o');
 									echo "</td>";
 									echo "<td>";
-										switch ($fila[4]) { //0:Pendiente, 1:Atrasada, 2:Entregada
+										switch ($fila[5]) { //0:Pendiente, 1:Atrasada, 2:Entregada
 											case '0':
 												echo "<select name='estado_actualizado' form='update'>";
 													echo "<option value='0'>Pendiente";
@@ -119,18 +119,18 @@ $consulta3=mysqli_query($conexion,$query);
 										}
 									echo "</td>";
 									echo "<td>";
-										echo $fila[5].' $';
+										echo $fila[6].' $';
 									echo "</td>";
 									echo "<td class='text-center'>";
-									switch ($fila[4]) {
+									switch ($fila[5]) {
 										case '0':
 										case '1':
 											echo "<form method='POST' action='updatedevoluciones.php' id='update'>";
-											echo "<input type='text' name='dni' value='$fila[0]' hidden>";
-											echo "<input type='text' name='pelicula' value='$fila[1]' hidden>";
-											echo "<input type='text' name='copia' value='$fila[2]' hidden>";
-											echo "<input type='date' name='fecha_devolucion' value='$fila[3]' hidden>";
-											echo "<input type='text' name='estado_actual' value='$fila[4]' hidden>";
+											echo "<input type='text' name='dni' value='$fila[1]' hidden>";
+											echo "<input type='text' name='pelicula' value='$fila[2]' hidden>";
+											echo "<input type='text' name='copia' value='$fila[3]' hidden>";
+											echo "<input type='date' name='fecha_devolucion' value='$fila[4]' hidden>";
+											echo "<input type='text' name='estado_actual' value='$fila[5]' hidden>";
 											echo "<button type='submit' class='btn btn-danger'>Actualizar</button>";
 											echo "</form>";
 											break;

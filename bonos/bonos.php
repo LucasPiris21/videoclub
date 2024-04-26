@@ -108,7 +108,11 @@ $date = date('d-m-o');
 										echo $fila[6];
 									echo "</td>";
 									echo "<td>";
-										echo $fila[7];
+										if ($fila[7]==NULL) {
+											echo "El personal ya no esta en la base de datos";
+										} else {
+											echo $fila[7];
+										}	
 									echo "</td>";
 									echo "<td class='text-center'>";
 										echo '<a href="deletebonos.php?id='.$fila[0].'" class="btn btn-danger">Eliminar</a>';

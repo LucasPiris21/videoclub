@@ -38,7 +38,7 @@ $id_factura=$fila[3];
 				</div>
 				<div class="form-group">
 					<label for="monton">Montón</label>
-					<input type="number" class="form-control" id="monton" name="monton" value="<?php echo $monton?>">
+					<input type="number" class="form-control" id="monton" name="monton" value="<?php echo $monton?>" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="dni_personal">DNI_Personal</label>
@@ -51,7 +51,7 @@ $id_factura=$fila[3];
 							}
 						?>
 						</datalist>
-						<input type="text" class="form-control" name="dni_personal" list="personal" value="<?php echo $dni_personal?>">
+						<input type="number" class="form-control" name="dni_personal" list="personal" value="<?php echo $dni_personal?>" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="id_factura">ID_Factura</label>

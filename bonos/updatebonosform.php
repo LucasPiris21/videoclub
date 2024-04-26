@@ -43,12 +43,12 @@ $dni_personal=$fila[7];
 				</div>
 				<div class="form-group">
 					<label for="credito">Credito</label>
-					<input type="text" class="form-control" id="credito" name="credito" value="<?php echo $credito; ?>">
+					<input type="number" class="form-control" id="credito" name="credito" min="1" pattern="^[0-9]+" value="<?php echo $credito; ?>" required>
 				</div>
 				<input type="text" class="form-control" id="credito_disponible" name="credito_disponible" value="<?php echo $credito_disponible; ?>" hidden>
 				<div class="form-group">
 					<label for="periodo">Periodo</label>
-					<input type="text" class="form-control" id="periodo" name="periodo" value="<?php echo $periodo; ?>">
+					<input type="number" class="form-control" id="periodo" name="periodo" min="1" pattern="^[0-9]+" value="<?php echo $periodo; ?>" required>
 				</div>
 				<div class="form-group">
 					<label for="fecha_emision">Fecha de Emision</label>
@@ -60,11 +60,33 @@ $dni_personal=$fila[7];
 				</div>
 				<div class="form-group">
 					<label for="dni_cliente">DNI del Cliente</label>
-					<input type="text" class="form-control" id="dni_cliente" name="dni_cliente" value="<?php echo $dni_cliente; ?>">
+					<datalist id="dni_cliente">
+						<?php
+							$conexion=mysqli_connect('localhost','root','','videoclub');
+							$query="SELECT `dni`, `nombre` FROM `clientes`";
+							$consulta=mysqli_query($conexion,$query);
+							while ($fila=mysqli_fetch_array($consulta)) {
+								echo "<option value='$fila[0]'>$fila[1]</option>";
+							}
+						?>
+					</datalist>
+					<br>
+					<input type="number" class="form-control" id="dni_cliente" name="dni_cliente" min="1" pattern="^[0-9]+" list="dni_cliente" value="<?php echo $dni_cliente; ?>" required>
 				</div>
 				<div class="form-group">
 					<label for="dni_personal">DNI del Personal</label>
-					<input type="text" class="form-control" id="dni_personal" name="dni_personal" value="<?php echo $dni_personal; ?>">
+					<datalist id="dni_personal">
+						<?php
+							$conexion=mysqli_connect('localhost','root','','videoclub');
+							$query="SELECT `dni`, `nombre` FROM `personal`";
+							$consulta=mysqli_query($conexion,$query);
+							while ($fila=mysqli_fetch_array($consulta)) {
+								echo "<option value='$fila[0]'>$fila[1]</option>";
+							}
+						?>
+					</datalist>
+					<br>
+					<input type="number" class="form-control" id="dni_personal" name="dni_personal" min="1" pattern="^[0-9]+" list="dni_personal" value="<?php echo $dni_personal; ?>" required>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-auto">

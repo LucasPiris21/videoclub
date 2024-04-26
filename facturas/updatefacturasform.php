@@ -39,7 +39,7 @@ $cuit_proveedor=$fila[4];
 				</div>
 				<div class="form-group">
 					<label for="monton">Montón</label>
-					<input type="number" class="form-control" id="monton" name="monton" value="<?php echo $monton?>">
+					<input type="number" class="form-control" id="monton" name="monton" value="<?php echo $monton?>" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="estado">Estado</label>
@@ -63,14 +63,14 @@ $cuit_proveedor=$fila[4];
 					<label for="id_pedido">ID_Pedido</label>
 						<datalist id="pedido">
 						<?php
-							$query1="SELECT `id_pedido` FROM `pedidos`";
+							$query1="SELECT `id_pedido`,`cuit_proveedor` FROM `pedidos`";
 							$consulta1=mysqli_query($conexion,$query1);
 							while ($fila1=mysqli_fetch_array($consulta1)) {
-								echo "<option value='$fila1[0]'></option>";
+								echo "<option value='$fila1[0]'>Proveedor: $fila1[1]</option>";
 							}
 						?>
 						</datalist>
-						<input type="text" class="form-control" name="id_pedido" list="pedido" value="<?php echo $fila[3] ?>">
+						<input type="number" class="form-control" name="id_pedido" list="pedido" value="<?php echo $fila[3] ?>" min="1" pattern="^[0-9]+" required>
 				</div>
 				<div class="form-group">
 					<label for="cuit_proveedor">Cuit_Proveedor</label>
@@ -83,7 +83,7 @@ $cuit_proveedor=$fila[4];
 							}
 						?>
 						</datalist>
-						<input class="form-control" name="cuit_proveedor" list="proveedor" value="<?php echo $cuit_proveedor?>">
+						<input type="number" class="form-control" name="cuit_proveedor" list="proveedor" value="<?php echo $cuit_proveedor?>">
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-auto">
